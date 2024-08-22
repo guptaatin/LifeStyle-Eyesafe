@@ -1,0 +1,13 @@
+
+{{#if page}}
+<div class="sidebarBlock page-sidebar-block">
+
+  <ul class="navList navList-treeview">
+    {{#each pages}}
+        {{#each children}}
+            <li class="navList-item"><a class="navPages-action" href="{{url}}" class="needsclick">{{ name }}</a></li>
+        {{/each}}
+    {{/each}}
+  </ul>
+</div>
+{{/if}}

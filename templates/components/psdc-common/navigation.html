@@ -1,0 +1,97 @@
+<nav class="navUser">
+    <ul class="navUser-section navUser-section--alt account-section sf-menu">
+      {{> components/psdc-common/header-account-menu}}
+
+    {{#if theme_settings.EnableProductCompare}}
+      <li class="navUser-item navUser-item-compare">
+          <a class="navUser-action navUser-item--compare needsclick" title="Compare" href="{{urls.compare}}" data-compare-nav>
+            <svg><use xlink:href="#icon-compare"></use></svg>
+            <span class="countPill countPill--positive"></span>
+          </a>
+      </li>
+    {{/if}}
+
+      <li class="navUser-item navUser-search">
+          <a class="navUser-action navUser-action--quickSearch" href="javascript:void(0);" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false"><svg class="search-icon"><use xlink:href="#icon-search"></use></svg> <svg class="search-close"><use xlink:href="#icon-close"></use></svg></a>
+      </li>
+
+
+      <li class="navUser-item navUser-item--cart">
+          <a  class="navUser-action"
+              data-cart-preview
+              data-dropdown="cart-preview-dropdown"
+              data-options="align:right"
+              href="{{urls.cart}}">
+              <span class="navUser-item-cartLabel">
+                <svg><use xlink:href="#icon-cart"></use></svg>
+              </span> <span class="countPill cart-quantity"></span>
+          </a>
+          <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+      </li>
+    </ul>
+
+</nav>
+
+<div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1" data-prevent-quick-search-close>
+    {{> components/psdc-common/quick-search headerSearch='headerSearch'}}
+</div>
+
+<div id="headerSidebar" class="header-side-bar">
+<div class="header-side-bar-inn">
+  <a href="{{urls.home}}"><img class="header-logo-image-unknown-size" src="{{getImage settings.store_logo.image 'logo_size'}}" alt="{{settings.store_logo.title}}" title="{{settings.store_logo.title}}"></a>
+  <div class="close">
+    <a class="close-icon" href="javascript:void(0);"><svg><use xlink:href="#icon-close"></use></svg></a>
+  </div>
+
+  <div class="category headerSidebar-block">
+    <ul class="navList navList-treeview">
+        <li class="navList-item"><a class="navPages-action" href="/categories" class="needsclick">BLUE LIGHT SCREEN PROTECTION</a></li>
+        {{#each categories}}
+            <li class="navPages-item">
+              {{> components/psdc-common/navigation-list}}
+            </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="webpages headerSidebar-block">
+    <ul class="navList navList-treeview">
+    {{#each pages}}
+        <li class="navList-item"><a class="navPages-action" href="{{url}}" class="needsclick">{{ name }}</a></li>
+        {{#each children}}
+            <li class="navList-item"><a class="navPages-action" href="{{url}}" class="needsclick">{{ name }}</a></li>
+        {{/each}}
+
+    {{/each}}
+    </ul>
+  </div>
+  <div class="account headerSidebar-block">
+    <ul class="navList navList-treeview treeview">
+      {{#if customer}}
+        <li class="navList-item">
+          <a class="navPages-action" href="{{urls.account.index}}">
+              {{lang 'common.account'}}
+          </a>
+        </li>
+        <li class="navList-item">
+            <a class="navPages-action" href="{{urls.auth.logout}}">
+              {{lang 'common.logout'}}
+            </a>
+        </li>
+      {{else}}
+        <li class="navList-item">
+          <a class="navPages-action" href="{{urls.auth.login}}">
+            {{lang 'common.login'}}
+          </a>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+  {{#if currency_selector.currencies.length '>' 1}}
+    <div class="brand headerSidebar-block mobile-currancy">
+      <h5 class="sidebarBlock-heading">{{lang 'common.currency' code=currency_selector.active_currency_code}} <span class="flag">{{{lang 'common.currency-flag' flag=currency_selector.active_currency_flag}}}</span><span class="code">{{lang 'common.currency-code' code=currency_selector.active_currency_code}}</span></h5>
+
+    </div>
+  {{/if}}
+</div>
+
+</div>

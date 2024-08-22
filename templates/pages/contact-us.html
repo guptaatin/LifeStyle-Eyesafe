@@ -1,0 +1,47 @@
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<main class="page">
+    {{#unless theme_settings.hide_contact_us_page_heading }}
+        {{#if forms.contact.success}}
+            <h1 class="page-heading">Thank you!</h1>
+        {{else}}
+            <h1 class="page-heading">{{page.title}}</h1>
+        {{/if}}
+    {{/unless}}
+    {{#if page.sub_pages}}
+        <nav class="navBar navBar--sub">
+            <ul class="navBar-section account-navigation">
+                {{#each page.sub_pages}}
+                    <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </nav>
+    {{/if}}
+
+    <div id="contact-us-page" class="page-content page-content--centered">
+        {{#if forms.contact.success}}
+            <center>
+                <p>Thank you for your interest in Eyesafe<sup>&reg;</sup> Blue Light Screen Filters.<br>
+                You will be contacted by <a href="https://eyesafe.com/">Eyesafe</a> or one of our partners with more information.</p>
+                <p>&nbsp;</p>
+                <p>
+                    <a href="/categories">
+                        <img src="/product_images/uploaded_images/filters-family-comingsoon.jpg" alt="">
+                    </a>
+                </p>
+                
+            </center>
+        
+        
+        
+        {{else}}
+            <p>{{{page.content}}}</p>
+            {{> components/page/contact-us-form}}
+        {{/if}}
+    </div>
+</main>
+{{/partial}}
+
+{{> layout/base}}

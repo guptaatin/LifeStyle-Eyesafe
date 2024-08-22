@@ -1,0 +1,165 @@
+<footer class="footer" role="contentinfo">
+    
+{{#if product}}
+<div data-sub-layout-container="xxx">
+    [quote-slider id="8"]
+</div>
+<div class="deviceform">
+	<div class="container deviceform-container">
+	    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+        <script>
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "20742397",
+            formId: "98c250df-60f1-42e9-8d31-bdf401a28056"
+          });
+        </script>
+	</div>
+</div>
+{{/if}}
+{{#if category}}
+<div class="deviceform">
+	<div class="container deviceform-container">
+	    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+        <script>
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "20742397",
+            formId: "98c250df-60f1-42e9-8d31-bdf401a28056"
+          });
+        </script>
+	</div>
+</div>
+{{/if}} 
+    
+    
+    
+    
+    
+    {{> components/psdc-common/usp-section}}
+    <div class="footer-info-inn">
+      <div class="container">
+          <section class="footer-info">
+            {{#if settings.address}}
+              <article class="footer-info-col footer-info-col--small footer-store-info" data-section-type="storeInfo">
+                  {{#if theme_settings.footer-logo}}
+                    <div class="footer-logo" style="display: block;">
+                      <a href="https://eyesafe.com/" target="_blank"><img src="/product_images/uploaded_images/{{theme_settings.footer-logo}}" alt=""></a>
+                    </div>
+                  {{/if}}
+                  {{#if settings.address}}
+                    <p><svg><use xlink:href="#icon-location"></use></svg><span>{{nl2br settings.address}}</span></p>
+                  {{/if}}
+                  {{#if settings.phone_number}}
+                    <p><svg><use xlink:href="#icon-call"></use></svg><a href="tel:{{lang 'footer.call_us' phone_number=settings.phone_number}}">{{lang 'footer.call_us' phone_number=settings.phone_number}}</a></p>
+                  {{/if}}
+                  {{#if theme_settings.footer-email}}
+                    <p class="email"><svg><use xlink:href="#icon-email-id"></use></svg><a href="mailto:{{theme_settings.footer-email}}">{{theme_settings.footer-email}}</a></p>
+                  {{/if}}
+                  {{#if theme_settings.footer-time}}
+                    <p class="time"><svg><use xlink:href="#icon-time"></use></svg><span>{{theme_settings.footer-time}}</span></p>
+                  {{/if}}
+              </article>
+            {{/if}}
+            {{#if categories}}
+                <article class="footer-info-col footer-info-col--medium" data-section-type="footer-categories">
+                    <h5><a href="/categories">Blue Light Screen Protection</a></h5>
+                    <p>
+                        {{#each categories}}
+                            {{#if @index '<' '12' }}
+                                <a href="{{url}}">{{name}}</a><br>
+                            {{/if}}
+                        {{/each}}
+                        <a href="/why-eyesafe/">RPF<sup>&reg;</sup></a><br>
+                    </p>
+                </article>
+            {{/if}}
+            {{#if pages}}
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                    <p>
+                    <a href="/why-eyesafe/">Why Eyesafe</a><br>
+                    <a href="/faq/">FAQ</a><br>
+                    <a href="/installation-guide/">Installation Guide</a><br>
+                    <a href="/buying-for-business/">Buying for Business</a><br>
+                    <a href="/shipping-returns/">Shipping &amp; Returns</a><br>
+                    <a href="/disclaimers-privacy-policy/">Disclaimers &amp; Privacy Policy</a><br>
+                    <a href="/contact-us/">Contact Us</a><br>
+                    </p>
+                </article>
+              {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+                  <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
+                      <p>
+                          {{#each shop_by_brand}}
+                              {{#if @index '<' '12' }}
+                                      <a href="{{url}}">{{name}}</a><br>
+                              {{/if}}
+                          {{/each}}
+                    </p>
+                  </article>
+              {{/and}}
+          {{/if}}
+          </section>
+
+        <div class="footer-info footer-mid-section">
+          {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
+            <article class="footer-info-col
+                footer-info-col--social
+                footer-info-col--{{#if theme_settings.social_icon_placement_bottom '===' 'bottom_left'}}left{{else}}right{{/if}}"
+                data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
+                    {{> components/common/social-links}}
+            </article>
+          {{/if}}
+          {{#if settings.show_newsletter_box}}
+            <article class="footer-info-col footer-info-newsletter" data-section-type="newsletterSubscription">
+              <div class="footer-info-newsletter-inn">
+                {{#if settings.show_newsletter_box}}
+                    {{> components/common/subscription-form}}
+                {{/if}}
+              </div>
+            </article>
+          {{/if}}
+          {{#or theme_settings.show_accept_amex theme_settings.show_accept_discover theme_settings.show_accept_mastercard theme_settings.show_accept_paypal theme_settings.show_accept_visa theme_settings.geotrust_ssl_common_name}}
+              <article class="footer-info-col footer-info-col--payment">
+                {{#or theme_settings.show_accept_amex theme_settings.show_accept_discover theme_settings.show_accept_mastercard theme_settings.show_accept_paypal theme_settings.show_accept_visa}}
+                  <div class="payment">
+                    <h5 class="footer-info-heading">{{lang 'payment-method.payment'}}</h5>
+                    {{> components/psdc-common/payment-icons}}
+                  </div>
+                {{/or}}
+                {{#if theme_settings.geotrust_ssl_common_name}}
+                  <div class="footer-geotrust-ssl-seal">
+                      {{> components/common/geotrust-ssl-seal}}
+                  </div>
+                {{/if}}
+              </article>
+          {{/or}}
+          <article class="footer-info-col footer-info-col--rpf">
+            <p style="padding-right: 117px;"><img src="https://cdn11.bigcommerce.com/s-bt0c8bj1a2/product_images/uploaded_images/rpf-footer-vert2.png" alt="RPF Radiance Protection Factor logo" width="105" /></p>
+          </article>
+        </div>
+      </div>
+    </div>
+    {{#or theme_settings.show_copyright_footer theme_settings.show_powered_by theme_settings.show_powered_by_bigcommerce}}
+    <div class="footer-bar">
+      <div class="container">
+        <div class="footer-bar-inn">
+          {{#or theme_settings.show_copyright_footer theme_settings.show_powered_by_bigcommerce}}
+            <div class="footer-copyright">
+                <p class="powered-by">
+                    {{#if theme_settings.show_copyright_footer}}
+                    <a href="https://eyesafe.com/">&copy; Copyright Eyesafe Inc. {{moment format="YYYY"}}</a>
+                    {{/if}}
+                </p>
+            </div>
+          {{/or}}
+          {{#if theme_settings.show_powered_by}}
+              <div class="footer-copyright">
+                  <p class="powered-by">BigCommerce Theme by <a class="theme-red-color" href="https://themes.psdcenter.com/?utm_source=lifestyleTheme&utm_medium=themebyPSD" rel="nofollow" target="_blank">PSDCenter</a></p>
+              </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    {{/or}}
+</footer>
